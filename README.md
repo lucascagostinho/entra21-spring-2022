@@ -1,2 +1,2 @@
-# entra21-spring-2022
-Repositório para as aulas de Spring
+# entra21-aulas-spring
+Repositório dedicado às aulas de spring.

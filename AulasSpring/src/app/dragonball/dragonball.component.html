@@ -1,0 +1,155 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Personagens cadastrados</h3>
+
+        <div class="card-tools">
+          <div class="input-group input-group-sm" style="width: 150px">
+            <button class="btn btn-outline-success" (click)="openForm()">
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div [hidden]="cadastrando" class="card-body table-responsive p-0">
+        <table class="table table-hover text-nowrap">
+          <thead>
+            <tr>
+              <th>Actions</th>
+
+              <th>Id</th>
+
+              <th>Name</th>
+
+              <th>Age</th>
+            </tr>
+          </thead>
+
+          <tbody *ngIf="personagens">
+            <tr *ngFor="let personagem of personagens">
+              <td>
+                <button
+                  class="btn btn-outline-primary btn-sm"
+                  (click)="updateForm(personagem)"
+                >
+                  Edit
+                </button>
+
+                <button
+                  class="btn btn-outline-danger btn-sm"
+                  (click)="delete(personagem)"
+                >
+                  Delete
+                </button>
+              </td>
+
+              <td>{{ personagem.id }}</td>
+
+              <td>{{ personagem.nome_heroi }}</td>
+
+              <td>{{ personagem.idade }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div *ngIf="personagem" [hidden]="!cadastrando" class="card-body">
+        <div class="row mt-2">
+          <div class="col"></div>
+
+          <div class="col-4">
+            <div class="row">
+              <div class="col">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-2">
+                        <label for="id">Id:</label>
+
+                        <input
+                          type="text"
+                          class="form-control"
+                          [(ngModel)]="personagem.id"
+                          placeholder="id"
+                          disabled
+                        />
+                      </div>
+
+                      <div class="col">
+
+                        <label for="nome"><font color="red">*</font> Nome:</label>
+
+                        <input
+
+                          type="text"
+
+                          class="form-control"
+
+                          [(ngModel)]="personagem.nome_heroi"
+
+                          placeholder="nome"
+
+                          required
+
+                        />
+
+                      </div>
+
+                      <div class="col-2">
+
+                        <label for="idade">Idade:</label>
+
+                        <input
+
+                          type="number"
+
+                          class="form-control"
+
+                          [(ngModel)]="personagem.idade"
+
+                          placeholder="idade"
+
+                        />
+
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="card-footer">
+                    <button
+                      [hidden]="personagem.id"
+                      class="btn btn-outline-success"
+                      (click)="create()"
+                    >
+                      Add
+                    </button>
+
+                    <button
+                      [hidden]="!personagem.id"
+                      class="btn btn-outline-success"
+                      (click)="update()"
+                    >
+                      Update
+                    </button>
+
+                    <button
+                      class="btn btn-outline-danger"
+                      (click)="closeForm()"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
